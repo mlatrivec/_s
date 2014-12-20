@@ -100,7 +100,11 @@ add_action( 'widgets_init', '_s_widgets_init' );
  * Enqueue scripts and styles.
  */
 function _s_scripts() {
-	wp_enqueue_style( '_s-style', get_stylesheet_uri() );
+	wp_enqueue_style( '_s-style', _s_get_parent_stylesheet_uri() );
+
+	if ( is_child_theme() ) {
+		wp_enqueue_style( '_s-child-style', get_stylesheet_uri() );
+	}
 
 	wp_enqueue_script( '_s-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 
@@ -111,6 +115,26 @@ function _s_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', '_s_scripts' );
+
+/**
+ * Retrieve URI of current parent theme stylesheet.
+ *
+ * The stylesheet file name is 'style.css' which is appended to {@link
+ * get_template_directory_uri() stylesheet directory URI} path.
+ *
+ * @return string
+ */
+function _s_get_parent_stylesheet_uri() {
+	$template_dir_uri      = get_template_directory_uri();
+	$parent_stylesheet_uri = $stylesheet_dir_uri . '/style.css';
+	/**
+	 * Filter the URI of the current parent theme stylesheet.
+	 *
+	 * @param string $parent_stylesheet_uri Stylesheet URI for the current parent theme.
+	 * @param string $template_dir_uri      Stylesheet directory URI for the current parent theme.
+	 */
+	return apply_filters( 'parent_stylesheet_uri', $parent_stylesheet_uri, $template_dir_uri );
+}
 
 /**
  * Implement the Custom Header feature.
