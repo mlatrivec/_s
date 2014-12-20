@@ -126,7 +126,7 @@ add_action( 'wp_enqueue_scripts', '_s_scripts' );
  */
 function _s_get_parent_stylesheet_uri() {
 	$template_dir_uri      = get_template_directory_uri();
-	$parent_stylesheet_uri = $stylesheet_dir_uri . '/style.css';
+	$parent_stylesheet_uri = $template_dir_uri . '/style.css';
 	/**
 	 * Filter the URI of the current parent theme stylesheet.
 	 *
