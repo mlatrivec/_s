@@ -14,6 +14,13 @@ dist: trusty
 # @link http://about.travis-ci.org/docs/user/languages/php/
 language: php
 
+cache:
+  apt: true
+  directories:
+    - $(npm config get prefix)/bin/jscs
+    - $(npm config get prefix)/bin/jshint
+    - $HOME/.composer/cache
+
 # Declare versions of PHP to use. Use one decimal max.
 # @link http://docs.travis-ci.com/user/build-configuration/
 matrix:
@@ -46,6 +53,7 @@ matrix:
 # e.g. copy database configurations, environment variables, etc.
 # Failures in this section will result in build status 'errored'.
 before_script:
+    - phpenv config-rm xdebug.ini
     - export PHPCS_DIR=/tmp/phpcs
     - export SNIFFS_DIR=/tmp/sniffs
     # Install CodeSniffer for WordPress Coding Standards checks.
