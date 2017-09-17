@@ -2,7 +2,9 @@
  * Single Product
  */
 .single-product {
+
 	div.product {
+
 		@include clearfix;
 		position: relative;
 
@@ -22,6 +24,7 @@
 			}
 
 			.flex-control-thumbs {
+
 				@include clearfix;
 				margin: 0;
 				padding: 0;
@@ -40,6 +43,7 @@
 					}
 
 					&:hover {
+
 						img {
 							opacity: 1;
 						}
@@ -48,9 +52,13 @@
 			}
 
 			@for $i from 2 through 5 {
+
 				&.woocommerce-product-gallery--columns-#{$i} {
+
 					.flex-control-thumbs {
+
 						li {
+
 							@include column-width($i);
 
 							&:nth-child(#{$i}n) {
@@ -69,6 +77,7 @@
 }
 
 .stock {
+
 	&:empty:before {
 		display: none;
 	}

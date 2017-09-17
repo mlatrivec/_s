@@ -1,0 +1,39 @@
+{
+  "name": "_s",
+  "version": "1.0.0",
+  "scripts": {
+    "css-build": "npm run scss-lint && npm run css-compile && npm run css-prefix && npm run css-format",
+    "css-lint": "stylelint style.css",
+    "css-compile": "node-sass sass/style.scss style.css --output-style expanded --indent-type tab --indent-width 1",
+    "css-prefix": "postcss style.css -u autoprefixer -o style.css --no-map",
+    "css-format": "stylelint style.css --fix && stylefmt style.css",
+    "scss-lint": "stylelint sass/**/*.scss --syntax scss",
+    "scss-fix": "stylelint sass/**/*.scss --syntax scss --fix"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.2",
+    "browserslist": "^2.1.5",
+    "node-sass": "^4.5.3",
+    "postcss-cli": "^4.1.0",
+    "stylefmt": "^6.0.0",
+    "stylelint": "^8.1.1",
+    "stylelint-config-wordpress": "^12.0.0"
+  },
+  "stylelint": {
+    "defaultSeverity": "warning",
+    "extends": "stylelint-config-wordpress",
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "ie >= 11",
+    "last 1 Android versions",
+    "last 1 ChromeAndroid versions",
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 iOS versions",
+    "last 2 Edge versions",
+    "last 2 Opera versions"
+  ]
+}
