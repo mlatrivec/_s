@@ -59,12 +59,7 @@ before_script:
     - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/scripts/phpcs --config-set installed_paths $SNIFFS_DIR; fi
     # After CodeSniffer install you should refresh your path.
     - if [[ "$SNIFF" == "1" ]]; then phpenv rehash; fi
-    # Install JSCS: JavaScript Code Style checker.
-    # @link http://jscs.info/
-    - if [[ "$SNIFF" == "1" ]]; then npm install -g jscs; fi
-    # Install JSHint, a JavaScript Code Quality Tool.
-    # @link http://jshint.com/docs/
-    - if [[ "$SNIFF" == "1" ]]; then npm install -g jshint; fi
+    - if [[ "$SNIFF" == "1" ]]; then npm install -g; fi
     # Pull in the WP Core jshint rules.
     - if [[ "$SNIFF" == "1" ]]; then wget https://develop.svn.wordpress.org/trunk/.jshintrc; fi
 
@@ -84,6 +79,7 @@ script:
     # Uses a custom ruleset based on WordPress. This ruleset is automatically
     # picked up by PHPCS as it's named `phpcs.xml(.dist)`.
     - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/scripts/phpcs; fi
+    - if [[ "$SNIFF" == "1" ]]; then npm run css-build; fi
 
 # Receive notifications for build results.
 # @link http://docs.travis-ci.com/user/notifications/#Email-notifications
