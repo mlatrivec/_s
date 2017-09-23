@@ -21,6 +21,7 @@
 
 	<!-- Check all files in this directory and the directories below it. -->
 	<file>.</file>
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
 
 	<!-- Include the WordPress ruleset, with exclusions. -->
 	<rule ref="WordPress">
