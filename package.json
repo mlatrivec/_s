@@ -2,7 +2,7 @@
   "name": "_s",
   "version": "1.0.0",
   "scripts": {
-    "css-build": "npm run css-lint && npm run css-compile && npm run css-prefix && npm run css-format && npm run css-fix",
+    "css-build": "npm run css-compile && npm run css-prefix && npm run css-format && npm run css-format && npm run css-fix",
     "css-lint": "stylelint style.css",
     "css-compile": "node-sass sass/style.scss style.css --output-style expanded --indent-type tab --indent-width 1",
     "css-prefix": "postcss style.css -u autoprefixer -o style.css --no-map",
