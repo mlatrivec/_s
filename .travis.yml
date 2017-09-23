@@ -81,7 +81,7 @@ script:
     - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/scripts/phpcs; fi
     - if [[ "$SNIFF" == "1" ]]; then git config credential.helper "store --file=.git/credentials"; fi
     - if [[ "$SNIFF" == "1" ]]; then git config user.name "Travis-CI"; fi
-    - if [[ "$SNIFF" == "1" ]]; then git config user.email "travis@travis-ci.com"; fi
+    - if [[ "$SNIFF" == "1" ]]; then git config user.email "support@travis-ci.org"; fi
     - if [[ "$SNIFF" == "1" ]]; then git checkout $TRAVIS_BRANCH; fi
     - if [[ "$SNIFF" == "1" ]]; then git add style.css; fi
     - if [[ "$SNIFF" == "1" ]]; then git commit -m "Generate style.css from $TRAVIS_COMMIT"; fi
